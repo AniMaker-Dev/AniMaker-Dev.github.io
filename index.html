@@ -4,273 +4,265 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AniMaker: Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation</title>
-  <meta name="description" content="AniMaker is a multi-agent framework for coherent, long-form storytelling animations. SIGGRAPH Asia 2025." />
-  <meta property="og:title" content="AniMaker: Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation" />
-  <meta property="og:description" content="A multi-agent system that generates coherent, long-form storytelling animations using MCTS‐driven clip generation and story‐level evaluation." />
-  <meta property="og:image" content="assets/pipeline.png" />
-  <link rel="icon" href="favicon.ico" />
+    <meta name="description" content="AniMaker is a multi-agent framework for coherent, long-form storytelling animations. SIGGRAPH Asia 2025." />
+    <meta property="og:title" content="AniMaker: Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation" />
+    <meta property="og:description" content="A multi-agent system that generates coherent, long-form storytelling animations using MCTS‐driven clip generation and story‐level evaluation." />
+    <meta property="og:image" content="assets/pipeline.png" />
+    <link rel="icon" href="favicon.ico" />
 
-  <style>
+    <style>
     :root {
-      --bg: #0b0c10;
-      --card: #111316;
-      --muted: #cfd4dc;
-      --text: #e9eef5;
-      --acc: #7dd3fc;
-      --acc2: #a78bfa;
-      --ok: #34d399;
-      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
-      --radius: 16px;
+        --bg: #0b0c10;
+        --card: #111316;
+        --muted: #cfd4dc;
+        --text: #e9eef5;
+        --acc: #7dd3fc;
+        --acc2: #a78bfa;
+        --ok: #34d399;
+        --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+        --radius: 16px;
     }
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
     html, body {
-      width: 100%;
-      min-height: 100%;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
+        width: 100%;
+        min-height: 100%;
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
     }
     a {
-      color: var(--acc);
-      text-decoration: none;
+        color: var(--acc);
+        text-decoration: none;
     }
     a:hover {
-      opacity: 0.85;
+        opacity: 0.85;
     }
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
     header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: rgba(11,12,16, 0.8);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: rgba(11,12,16, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 15px 20px;
     }
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.25rem;
-      font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.25rem;
+        font-weight: 700;
     }
     .brand .logo {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--acc), var(--acc2));
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
     }
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
     }
     .nav-links .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      font-size: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: background 0.3s;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        font-size: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: background 0.3s;
     }
     .nav-links .pill:hover {
-      background: rgba(255,255,255,0.10);
+        background: rgba(255,255,255,0.10);
     }
     .nav-links .btn {
-      padding: 10px 16px;
-      border-radius: var(--radius);
-      font-size: 0.95rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.2s, background 0.3s;
+        padding: 10px 16px;
+        border-radius: var(--radius);
+        font-size: 0.95rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: transform 0.2s, background 0.3s;
     }
     .nav-links .btn.ghost {
-      background: #8b1a1a;
-      color: var(--text);
-      font-weight: 600;
+        background: #8b1a1a;
+        color: var(--text);
+        font-weight: 600;
     }
     .nav-links .btn.primary {
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      color: #081018;
-      font-weight: 600;
+        background: linear-gradient(135deg, var(--acc), var(--acc2));
+        color: #081018;
+        font-weight: 600;
     }
     .nav-links .btn:hover {
-      transform: scale(1.03);
+        transform: scale(1.03);
     }
 
     /* Hero / Intro */
     .hero {
-      text-align: center;
-      padding: 80px 20px 60px;
+        text-align: center;
+        padding: 80px 20px 60px;
     }
     .hero h1 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        line-height: 1.1;
+        margin-bottom: 20px;
     }
     .hero .subtitle {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 800px;
-      margin: 0 auto 30px;
-      line-height: 1.5;
+        font-size: 1.2rem;
+        color: var(--muted);
+        max-width: 800px;
+        margin: 0 auto 30px;
+        line-height: 1.5;
     }
     .hero .authors {
-      margin-bottom: 40px;
+        margin-bottom: 40px;
     }
     .hero .authors a, .hero .authors span {
-      display: inline-block;
-      margin: 0 6px;
-      padding: 0;
-      border-radius: 0;
-      background: none;
+        display: inline-block;
+        margin: 0 6px;
+        padding: 0;
+        border-radius: 0;
+        background: none;
     }
     .hero .footnote {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 40px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 40px;
     }
 
     /* Sections */
     section {
-      padding: 60px 0;
+        padding: 60px 0;
     }
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 24px;
-      text-align: center;
+        font-size: 2rem;
+        margin-bottom: 24px;
+        text-align: center;
     }
     .card {
-      background-color: var(--card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.06);
+        background-color: var(--card);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,0.06);
     }
     .card-content {
-      padding: 24px;
+        padding: 24px;
     }
     .grid {
-      display: grid;
-      gap: 24px;
+        display: grid;
+        gap: 24px;
     }
     .grid.cols-2 {
-      grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     @media (max-width: 768px) {
-      .grid.cols-2 {
+        .grid.cols-2 {
         grid-template-columns: 1fr;
-      }
+        }
     }
 
     .media img, .media video, .media iframe {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
+        width: 100%;
+        height: auto;
+        display: block;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
     }
 
     .workflow-steps {
-      display: grid;
-      gap: 16px;
+        display: grid;
+        gap: 16px;
     }
     .workflow-steps .step {
-      border: 1px dashed rgba(255,255,255,0.12);
-      padding: 20px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.02);
-      text-align: left;
+        border: 1px dashed rgba(255,255,255,0.12);
+        padding: 20px;
+        border-radius: var(--radius);
+        background: rgba(255,255,255,0.02);
+        text-align: left;
     }
     .workflow-steps .step b {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: var(--acc2);
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        color: var(--acc2);
     }
 
     .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow-x: auto;
-      margin: 0 auto;
+        width: 100%;
+        border-collapse: collapse;
+        overflow-x: auto;
+        margin: 0 auto;
     }
     .comparison-table th, .comparison-table td {
-      padding: 12px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.1);
+        padding: 12px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.1);
     }
     .comparison-table video {
-      max-width: 220px;
+        max-width: 220px;
     }
 
-    .resources-list, .citation-code {
-      max-width: 700px;
-      margin: 0 auto;
+    .resources-list {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .citation-code {
+        max-width: 700px;
+        margin: 0; /* 改这里：不再居中 */
+        text-align: left; /* 强制左对齐 */
     }
     
     .citation-code pre,
     .citation-code pre code {
-    text-align: left;
-    }
-    
-    .citation-code pre code {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    .resources-list ul {
-      list-style: none;
-      padding: 0;
-    }
-    .resources-list li {
-      margin-bottom: 12px;
-      font-size: 1rem;
+        text-align: left !important;
+        white-space: pre-wrap;   /* 自动换行 */
+        word-break: break-word;
     }
 
     .btn-primary-large {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      color: #081018;
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 20px;
-      transition: transform 0.2s, opacity 0.3s;
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, var(--acc), var(--acc2));
+        color: #081018;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: transform 0.2s, opacity 0.3s;
     }
     .btn-primary-large:hover {
-      transform: scale(1.03);
+        transform: scale(1.03);
     }
 
     footer {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+        text-align: center;
+        padding: 40px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
     }
-
-  </style>
+    </style>
 </head>
 <body>
   <header>
