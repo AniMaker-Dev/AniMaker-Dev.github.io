@@ -96,13 +96,24 @@
             <p>Unlike traditional methods that produce rigid and disjointed clips, AniMaker enables multi-candidate generation, intelligent clip selection, and global story-level consistency. It integrates specialized agents and novel evaluation strategies, achieving superior quality and efficiency compared to existing video generation approaches.</p>
           </div>
 
-          <h3 class="title is-4" style="color: #333; margin-top: 2.5rem;">Workflow</h3>
-
-          <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
-            <div class="workflow-block"><strong style="color: #667eea;">Director Agent:</strong> Generates the storyboard from the input text, defining multi-scene and multi-character narratives.</div>
-            <div class="workflow-block"><strong style="color: #764ba2;">Photography Agent:</strong> Uses MCTS-Gen, an MCTS-inspired strategy, to efficiently generate multiple candidate clips and select high-potential ones.</div>
-            <div class="workflow-block"><strong style="color: #ed4b82;">Reviewer Agent:</strong> Employs AniEval, the first evaluation framework for multi-shot animation, to assess story-level consistency, action completion, and animation features across clips.</div>
-            <div class="workflow-block"><strong style="color: #ff6b35;">Post-Production Agent:</strong> Edits the final sequence, ensures smooth transitions, and adds voiceovers for a production-quality output.</div>
+          <h3 class="title is-4" style="color: #333; margin-bottom: 1.5rem; margin-top: 2.5rem; font-weight: 600;">Workflow</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+            <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #667eea;">
+              <p style="margin: 0;"><strong style="color: #667eea;">Director Agent:</strong> Generates the storyboard from the input text, defining multi-scene and multi-character narratives.</p>
+            </div>
+            
+            <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #764ba2;">
+              <p style="margin: 0;"><strong style="color: #764ba2;">Photography Agent:</strong> Uses MCTS-Gen, an MCTS-inspired strategy, to efficiently generate multiple candidate clips and select high-potential ones.</p>
+            </div>
+            
+            <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #ed4b82;">
+              <p style="margin: 0;"><strong style="color: #ed4b82;">Reviewer Agent:</strong> Employs AniEval, the first evaluation framework for multi-shot animation, to assess story-level consistency, action completion, and animation features across clips.</p>
+            </div>
+            
+            <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #ff6b35;">
+              <p style="margin: 0;"><strong style="color: #ff6b35;">Post-Production Agent:</strong> Edits the final sequence, ensures smooth transitions, and adds voiceovers for a production-quality output.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -111,22 +122,23 @@
 </section>
 
 <!-- Citation -->
-<section class="hero is-light is-small" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
-  <div class="hero-body has-text-centered" style="padding: 3rem 1.5rem;">
-    <h1 class="title is-2" style="color: #333; font-weight: 700; margin-bottom: 0.5rem;" id="citation">Citation</h1>
-    <p style="color: #666; font-size: 1.1rem;">If you find our work useful, please cite our paper</p>
-  </div>
-</section>
-
-<section class="section" id="BibTeX" style="padding: 2rem 0;">
-  <div class="container is-max-desktop content">
-    <div style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; border-left: 4px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-<pre><code>@misc{shi2025animaker,
+<section class="section" style="padding: 3rem 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: #333; margin-bottom: 2rem; font-weight: 600;">Citation</h2>
+        <div class="content" style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+          <p style="color: #666; font-size: 1.1rem; margin-bottom: 2rem;">If you find our work useful, please cite our paper</p>
+          <div style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; border-left: 4px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <pre style="background: transparent; border: none; margin: 0; padding: 0; font-size: 0.9rem; line-height: 1.5;"><code>@misc{shi2025animaker,
   title={AniMaker: Automated Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation}, 
   author={Shi, Haoyuan and Li, Yunxin and Chen, Xinyu and Wang, Longyue and Hu, Baotian and Zhang, Min},
   journal={arXiv preprint arXiv:2506.10540},
   year={2025}
 }</code></pre>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
