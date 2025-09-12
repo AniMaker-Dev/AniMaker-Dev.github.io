@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation">
-  <meta name="keywords" content="AniMaker">
+  <meta name="description" content="AniMaker: Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation">
+  <meta name="keywords" content="AniMaker, MCTS, Multi-Agent Animation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AniMaker: Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation</title>
+  <title>AniMaker: Multi-Agent Animated Storytelling</title>
 
   <link rel="icon" href="./static/images/videovista.png">
-
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -16,84 +15,68 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="stylesheet" href="./static/css/leaderboard.css">
 
   <style>
-    body {
-      background-color: #0f172a;
-      color: #e2e8f0;
-      font-family: 'Noto Sans', sans-serif;
-    }
-    .title, .subtitle {
-      color: #f1f5f9 !important;
-    }
-    .publication-title .videovista {
-      background: linear-gradient(45deg, #60a5fa 0%, #a78bfa 100%);
+    body { background: #0f172a; color: #e2e8f0; }
+    .title, .subtitle { color: #f8fafc !important; }
+    .videovista {
+      background: linear-gradient(45deg, #60a5fa, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    section.section {
-      padding: 3rem 0;
-    }
-    .content-block {
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(6px);
-      border-radius: 12px;
-      padding: 2rem;
-      border-left: 4px solid #60a5fa;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    .publication-links .button {
+      background: #1e293b; border: 1px solid #334155; color: #e2e8f0;
     }
     .workflow-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      text-align: center;
+      background: #1e293b; padding: 1.5rem; border-radius: 12px;
+      border-left: 5px solid #60a5fa; color: #e2e8f0;
     }
-    footer.footer {
-      background: #1e293b;
-      color: #94a3b8;
-    }
-    a {
-      color: #60a5fa;
-    }
+    footer { background: #1e293b; color: #94a3b8; padding: 2rem; }
   </style>
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation" style="background: transparent; box-shadow: none;"></nav>
+<!-- Navbar -->
+<nav class="navbar" role="navigation" style="background:#0f172a;">
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" style="color:#f8fafc;">More Research</a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://videovista.github.io/">VideoVista</a>
+          <a class="navbar-item" href="https://mathvista.github.io/">MathVista</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<section class="hero is-fullheight-with-navbar">
+<!-- Hero Section -->
+<section class="hero">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title is-1 publication-title is-bold">
+      <h1 class="title is-1 publication-title">
         <span class="videovista">AniMaker</span>
       </h1>
-      <h2 class="subtitle is-3">
-        Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation
-      </h2>
-
-      <!-- Authors -->
-      <div class="is-size-5" style="margin-bottom: 1.5rem;">
-        <span class="author-block"><a href="#">Haoyuan Shi</a><sup>1</sup>,</span>
-        <span class="author-block"><a href="#">Yunxin Li</a><sup>1</sup>,</span>
-        <span class="author-block"><a href="#">Xinyu Chen</a><sup>1</sup>,</span>
-        <span class="author-block">Longyue Wang<sup>2</sup>,</span>
-        <span class="author-block"><a href="#">Baotian Hu</a><sup>1*</sup>,</span>
-        <span class="author-block"><a href="#">Min Zhang</a><sup>1</sup></span>
+      <h2 class="subtitle is-3">Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation</h2>
+      <div class="is-size-5">
+        <a href="https://scholar.google.com/citations?hl=en&user=N4L5o9UAAAAJ">Haoyuan Shi</a><sup>1</sup>,
+        <a href="https://yunxinli.github.io/">Yunxin Li</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=vdhyjz4AAAAJ&hl=en">Xinyu Chen</a><sup>1</sup>,
+        Longyue Wang<sup>2</sup>,
+        <a href="https://faculty.hitsz.edu.cn/hubaotian">Baotian Hu</a><sup>1*</sup>,
+        <a href="https://faculty.hitsz.edu.cn/MinZhang">Min Zhang</a><sup>1</sup>
       </div>
-      <div class="is-size-6" style="color: #94a3b8; margin-bottom: 2rem;">
-        <span><sup>1</sup>Harbin Institute of Technology, Shenzhen</span><br>
-        <span><sup>2</sup>Alibaba International Group</span><br>
-        <span style="font-style: italic;">* Corresponding Authors</span>
-      </div>
-
+      <p class="is-size-6" style="color:#94a3b8; margin-top:1rem;">
+        <sup>1</sup> Harbin Institute of Technology, Shenzhen &nbsp;&nbsp;
+        <sup>2</sup> Alibaba International Group
+      </p>
       <!-- Links -->
-      <div class="buttons is-centered">
-        <a href="https://arxiv.org/abs/2506.10540" class="button is-rounded is-light">
+      <div class="publication-links" style="margin-top: 2rem;">
+        <a href="https://arxiv.org/abs/2506.10540" class="button is-rounded">
           <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
         </a>
-        <a href="https://github.com/HITsz-TMG/Anim-Director/tree/main/AniMaker" class="button is-rounded is-light">
+        <a href="https://github.com/HITsz-TMG/Anim-Director/tree/main/AniMaker" class="button is-rounded">
           <span class="icon"><i class="fab fa-github"></i></span><span>GitHub</span>
         </a>
       </div>
@@ -105,16 +88,12 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Introduction</h2>
-    <div class="content-block">
-      <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; text-align: center;">
-        AniMaker is a multi-agent framework designed to efficiently generate coherent, long-form storytelling animations from text input.
-      </p>
-      <p style="text-align: justify;">
-        Unlike traditional methods that produce rigid and disjointed clips, AniMaker enables multi-candidate generation, intelligent clip selection, and global story-level consistency. It integrates specialized agents and novel evaluation strategies, achieving superior quality and efficiency compared to existing video generation approaches.
-      </p>
-    </div>
-    <div style="margin: 3rem auto; text-align: center;">
-      <img src="./assets/visualization.png" alt="AniMaker Overview" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.4);">
+    <p class="has-text-justified">
+      AniMaker is a multi-agent framework designed to efficiently generate coherent, long-form storytelling animations from text input.
+      Unlike traditional methods that produce rigid and disjointed clips, AniMaker enables multi-candidate generation, intelligent clip selection, and global story-level consistency.
+    </p>
+    <div style="margin-top:2rem; text-align:center;">
+      <img src="./assets/visualization.png" alt="AniMaker Overview" style="border-radius: 12px; width: 100%;">
     </div>
   </div>
 </section>
@@ -122,36 +101,14 @@
 <!-- Workflow -->
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
-    <h3 class="title is-4">Workflow</h3>
-    <div class="columns is-multiline" style="margin-top: 2rem;">
-      <div class="column is-half">
-        <div class="workflow-card" style="border-left: 5px solid #60a5fa;">
-          <strong style="color: #60a5fa;">Director Agent:</strong><br>
-          Generates the storyboard from the input text, defining multi-scene and multi-character narratives.
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="workflow-card" style="border-left: 5px solid #a78bfa;">
-          <strong style="color: #a78bfa;">Photography Agent:</strong><br>
-          Uses MCTS-Gen to efficiently generate multiple candidate clips and select high-potential ones.
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="workflow-card" style="border-left: 5px solid #f472b6;">
-          <strong style="color: #f472b6;">Reviewer Agent:</strong><br>
-          Employs AniEval to assess story-level consistency, action completion, and animation features across clips.
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="workflow-card" style="border-left: 5px solid #fb923c;">
-          <strong style="color: #fb923c;">Post-Production Agent:</strong><br>
-          Edits the final sequence, ensures smooth transitions, and adds voiceovers for a production-quality output.
-        </div>
-      </div>
+    <h2 class="title is-3">Workflow</h2>
+    <div class="columns is-multiline" style="margin-top:2rem;">
+      <div class="column is-half"><div class="workflow-card">Director Agent: Generates the storyboard.</div></div>
+      <div class="column is-half"><div class="workflow-card">Photography Agent: MCTS-Gen clip generation.</div></div>
+      <div class="column is-half"><div class="workflow-card">Reviewer Agent: AniEval evaluation.</div></div>
+      <div class="column is-half"><div class="workflow-card">Post-Production Agent: Editing and voiceover.</div></div>
     </div>
-    <div style="margin-top: 3rem;">
-      <img src="./assets/pipeline.png" alt="AniMaker Pipeline" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.4);">
-    </div>
+    <img src="./assets/pipeline.png" alt="AniMaker Pipeline" style="margin-top:2rem; border-radius: 12px; width: 100%;">
   </div>
 </section>
 
@@ -159,25 +116,21 @@
 <section class="section">
   <div class="container is-max-desktop has-text-centered">
     <h2 class="title is-3">Citation</h2>
-    <p style="color: #94a3b8;">If you find our work useful, please cite our paper</p>
-    <div class="content-block" style="text-align: left; margin-top: 1.5rem;">
-<pre><code>@misc{shi2025animaker,
-  title={AniMaker: Automated Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation}, 
+    <pre style="background:#1e293b; padding:1rem; border-radius:8px; color:#f1f5f9;">
+@misc{shi2025animaker,
+  title={AniMaker: Automated Multi-Agent Animated Storytelling with MCTS-Driven Clip Generation},
   author={Shi, Haoyuan and Li, Yunxin and Chen, Xinyu and Wang, Longyue and Hu, Baotian and Zhang, Min},
   journal={arXiv preprint arXiv:2506.10540},
   year={2025}
-}</code></pre>
-    </div>
+}
+    </pre>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="content has-text-centered">
-    <p>
-      This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a> and 
-      <a href="https://mathvista.github.io/">MathVista</a>, licensed under 
-      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0</a>.
-    </p>
+    <p>This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://mathvista.github.io/">MathVista</a>, licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
   </div>
 </footer>
 
